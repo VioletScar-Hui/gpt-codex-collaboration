@@ -8,6 +8,10 @@
 ![Language](https://img.shields.io/badge/docs-中文%20%7C%20English-7c3aed)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![GPT–Codex Collaboration: task splitting, external compression, and Codex verification under a low token budget](assets/gpt-codex-collaboration-hero.png)
+
+*When the budget runs low, delegate one high-context subproblem and preserve Codex tokens to verify and ship.*
+
 When Codex can see that its remaining token budget is running short but meaningful work is still unfinished, this Skill hands one high-context, safely delegable subproblem to ChatGPT. Codex keeps its limited budget for verification, decisions, and finishing the job.
 
 > The current release is **v1.2.0 Beta** and supports only a ChatGPT web session already signed in through the user's Chrome browser. It is a remaining-token rescue mechanism, not free context: it may reduce long-source ingestion into the active Codex context, but does not promise lower total compute, billed tokens, or latency.

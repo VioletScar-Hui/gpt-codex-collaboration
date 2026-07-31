@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## [1.2.0] - 2026-07-31
 
+### Added
+
+- Added a bilingual README hero visual showing low Codex budget, one bounded ChatGPT handoff, compact returned insights, and Codex verification/final delivery.
+
 ### Changed
 
 - Repositioned the Skill around its primary job: rescuing unfinished work when Codex has an observably insufficient remaining token budget.

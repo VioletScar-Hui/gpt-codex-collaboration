@@ -8,6 +8,10 @@
 ![Language](https://img.shields.io/badge/docs-中文%20%7C%20English-7c3aed)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![GPT–Codex Collaboration：低 token 预算下的任务切分、外部压缩与 Codex 核验收尾](assets/gpt-codex-collaboration-hero.png)
+
+*余额告急时，只外包一个高上下文子问题；Codex 保留预算核验并完成交付。*
+
 当 Codex 发现自己的 token 余额快不够了，但活还没干完，这个 Skill 会把剩余任务中最吃上下文、且可安全外包的一段交给 ChatGPT；Codex 把有限的余额留给核验、决策和收尾。
 
 > 当前版本为 **v1.2.0 Beta**，仅支持用户已登录的 Chrome ChatGPT 网页会话。它是“剩余 token 预算救援”，不是免费增加上下文：可能减少当前 Codex 对长源材料的摄入，但不保证减少总计算量、真实计费 token 或任务耗时。
