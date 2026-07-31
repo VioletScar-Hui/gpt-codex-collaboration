@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-07-31T23:28:31+08:00",
+  "runtime": "Codex desktop + Chrome extension + logged-in ChatGPT Plus web session",
+  "scenario": "Ask ChatGPT to read the public Product-deep-dive bilingual READMEs and return a bounded decision packet for this repository",
+  "privacy_class": "public",
+  "target_domain": "chatgpt.com",
+  "new_conversation": true,
+  "conversation_url": "https://chatgpt.com/c/6a6cbdf6-26d0-83ea-87ae-b3d936d0a423",
+  "metrics": {
+    "direct_source_chars": 28261,
+    "always_loaded_skill_chars": 3017,
+    "conditional_brief_template_chars": 589,
+    "brief_chars": 252,
+    "response_node_chars": 860,
+    "response_chars_read": 860,
+    "source_ingestion_avoidance_proxy_chars": 4718,
+    "source_ingestion_avoidance_percent": 83.3,
+    "node_repl_browser_calls": 19,
+    "kernel_timeout_recoveries": 3,
+    "sensitive_pattern_matches": 0
+  },
+  "verdict": {
+    "source_ingestion_avoidance_proxy": "positive",
+    "latency_and_tool_cost": "negative",
+    "overall": "conditional; useful only when Codex context budget matters more than latency"
+  },
+  "response_contract": {
+    "max_claims": 3,
+    "max_chars": 1200,
+    "actual_claims": 3,
+    "actual_chars": 860,
+    "passed": true
+  },
+  "fact_check": [
+    "Bilingual navigation and parallel README structure are present",
+    "Installation, verification and first-run sections are present",
+    "Feishu/Lark-specific prerequisites and output chapters should not be copied"
+  ],
+  "limitations": [
+    "Character counts are a reproducible source-ingestion avoidance proxy, not total context or billed token telemetry",
+    "Browser call arguments, protocol returns, errors and recovery output are excluded from the proxy",
+    "The source READMEs had already been inspected for release work, so this run validates the workflow rather than proving avoided historical cost",
+    "Chrome connection instability materially increased latency and tool calls"
+  ]
+}

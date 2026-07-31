@@ -1,0 +1,51 @@
+{
+  "iteration": 3,
+  "skill_version": "1.1.0",
+  "baseline": "iteration-2",
+  "environment": {
+    "runtime": "Codex desktop + Chrome extension",
+    "eval_set": "evals.json@1.1.0"
+  },
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "partial": 1,
+    "not_run": 20
+  },
+  "results": [
+    {
+      "eval_id": "core-6",
+      "status": "passed",
+      "evidence": [
+        "Existing logged-in ChatGPT Plus session detected without credential access",
+        "New conversation created at https://chatgpt.com/c/6a6cbdf6-26d0-83ea-87ae-b3d936d0a423",
+        "Public 252-character brief submitted and 860-character bounded response extracted"
+      ]
+    },
+    {
+      "eval_id": "core-7",
+      "status": "partial",
+      "evidence": [
+        "28,261 direct-source characters versus 4,718 source-ingestion proxy characters after final Skill growth",
+        "Proxy avoidance 83.3%; browser protocol overhead and actual billing tokens are excluded",
+        "Latency/tool cost was negative and recorded instead of hidden"
+      ]
+    },
+    {
+      "eval_id": "edge-4",
+      "status": "not-run",
+      "evidence": ["Three browser-kernel timeouts exposed the need for a single stage-wide recovery budget; authentication/CAPTCHA/limit branches were not exercised"]
+    },
+    {
+      "eval_id": "edge-5",
+      "status": "not-run",
+      "evidence": ["Negative-ROI routing awaits Round 3 adversarial replay"]
+    },
+    {
+      "eval_id": "core-8",
+      "status": "not-run",
+      "evidence": ["Forced-override routing awaits Round 3 adversarial replay"]
+    }
+  ],
+  "note": "Unlisted evals remain not-run. Structural validation and adversarial review are recorded separately."
+}

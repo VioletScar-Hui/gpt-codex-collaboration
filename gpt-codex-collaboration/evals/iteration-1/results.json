@@ -1,0 +1,33 @@
+{
+  "iteration": 1,
+  "skill_version": "1.0.0",
+  "baseline": "website-visual-co-review@1.0.0 过拟合失败",
+  "environment": {
+    "runtime": "Codex desktop",
+    "model": "current session",
+    "eval_set": "evals.json@1.0.0"
+  },
+  "summary": {
+    "passed": 0,
+    "failed": 0,
+    "not_run": 16
+  },
+  "results": [
+    {"eval_id": "core-1", "status": "not-run", "evidence": ["代码协作契约已人工走查；未做独立新会话回放"]},
+    {"eval_id": "core-2", "status": "not-run", "evidence": ["只读授权分支已写入；未做独立新会话回放"]},
+    {"eval_id": "core-3", "status": "not-run", "evidence": ["网站已降为领域实例；未做跨 Skill 真环境回放"]},
+    {"eval_id": "core-4", "status": "not-run", "evidence": ["研究核验规则已写入；未做联网集成回放"]},
+    {"eval_id": "core-5", "status": "not-run", "evidence": ["口语触发词已覆盖；未做真环境路由"]},
+    {"eval_id": "core-6", "status": "not-run", "evidence": ["Chrome 登录态规则已写入；未做浏览器集成回放"]},
+    {"eval_id": "core-7", "status": "not-run", "evidence": ["Token ROI Gate 与紧凑回执已写入；未做成本对比回放"]},
+    {"eval_id": "edge-1", "status": "not-run", "evidence": ["普通任务排除边界已写入 description"]},
+    {"eval_id": "edge-2", "status": "not-run", "evidence": ["显式排除外部模型分支已写入"]},
+    {"eval_id": "edge-3", "status": "not-run", "evidence": ["凭证安全停止条件已写入；未做对抗回放"]},
+    {"eval_id": "edge-4", "status": "not-run", "evidence": ["外部不可用停止条件已写入；未做故障集成回放"]},
+    {"eval_id": "edge-5", "status": "not-run", "evidence": ["负 Token ROI 分支已写入；未做成本对比回放"]},
+    {"eval_id": "gotcha-1", "status": "not-run", "evidence": ["来自本轮真实失败：把通用协作过拟合为网站评审"]},
+    {"eval_id": "gotcha-2", "status": "not-run", "evidence": ["来自真实联合评审：外部模型产生无依据事实"]},
+    {"eval_id": "gotcha-3", "status": "not-run", "evidence": ["来自真实联合评审：外部模型长时间泛搜不收敛"]},
+    {"eval_id": "gotcha-4", "status": "not-run", "evidence": ["来自真实对话：用户已说明 Chrome 登录状态"]}
+  ]
+}
