@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here.
 
+## [1.2.0] - 2026-07-31
+
+### Changed
+
+- Repositioned the Skill around its primary job: rescuing unfinished work when Codex has an observably insufficient remaining token budget.
+- Added a low-budget routing path that delegates one high-context, safely shareable subproblem while reserving Codex budget for verification and final delivery.
+- Clarified that the Skill never invents token counts and that vague token concern alone is not evidence.
+- Kept low-budget micro-tasks local because ChatGPT handoff overhead would consume more budget than finishing directly.
+- Updated both README variants and distinguished the historical v1.1 source-ingestion proxy from v1.2 claims.
+
 ## [1.1.0] - 2026-07-31
 
 ### Added

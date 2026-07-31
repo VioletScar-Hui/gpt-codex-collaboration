@@ -8,14 +8,27 @@
 ![Language](https://img.shields.io/badge/docs-中文%20%7C%20English-7c3aed)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Let ChatGPT handle suitable long-source reading, divergence, or first-pass review while Codex owns boundaries, critical verification, final judgment, and implementation. This is not “two models doing the whole task twice”; it is a collaboration protocol with cost, privacy, authorization, and evidence gates.
+When Codex can see that its remaining token budget is running short but meaningful work is still unfinished, this Skill hands one high-context, safely delegable subproblem to ChatGPT. Codex keeps its limited budget for verification, decisions, and finishing the job.
 
-> The current release is **v1.1.0 Beta** and supports only a ChatGPT web session already signed in through the user's Chrome browser. It may reduce long-source ingestion into the active Codex context. It does not promise lower total compute, billed tokens, or latency.
+> The current release is **v1.2.0 Beta** and supports only a ChatGPT web session already signed in through the user's Chrome browser. It is a remaining-token rescue mechanism, not free context: it may reduce long-source ingestion into the active Codex context, but does not promise lower total compute, billed tokens, or latency.
+
+## Purpose: finish the work before Codex runs out of tokens
+
+This Skill addresses one concrete situation: Codex can reliably observe that its remaining token budget is insufficient to finish the current task, while a meaningful block of work remains. It will:
+
+1. reserve Codex budget for fact checking, implementation validation, and final delivery;
+2. isolate one high-context subproblem that is safe to disclose;
+3. ask ChatGPT for a compact decision packet;
+4. verify the result and finish the original task in Codex.
+
+The Skill never invents a token count. “Low budget” is treated as a fact only when the runtime exposes it or the user states it explicitly.
 
 ## When to use it
 
 Use it when:
 
+- Codex can reliably observe that its remaining token budget is insufficient, while long-source reading, divergence, or first-pass review remains unfinished;
+- the remaining work contains one high-context subproblem that ChatGPT can handle without receiving sensitive information;
 - you explicitly ask ChatGPT to review first and Codex to judge or implement afterward;
 - ChatGPT can access long public sources directly while Codex verifies only high-impact claims;
 - you want independent opposition review, option generation, or initial synthesis;
@@ -23,16 +36,17 @@ Use it when:
 
 Do not use it when:
 
+- the token budget is low but only a word change, punctuation fix, or one-line conclusion remains;
 - the task is as small as renaming a variable or validating a tiny JSON value;
 - Codex must fully ingest the material before it can write the handoff;
 - private material cannot be safely redacted, or verification would duplicate the work;
-- the user only asks for a shorter answer or fewer tokens, without external collaboration;
-- the requested provider is Claude, Gemini, or another non-ChatGPT service. v1.1 never swaps providers silently.
+- token pressure is only a vague concern, no reliable budget is visible, and the user did not request external collaboration;
+- the requested provider is Claude, Gemini, or another non-ChatGPT service. v1.2 never swaps providers silently.
 
 ## How it works
 
 ```text
-explicit collaboration intent
+low token budget + meaningful unfinished work, or explicit collaboration intent
   → Token ROI Gate
   → business goal and original authorization
   → public / private / sensitive data Gate
@@ -117,7 +131,7 @@ The workflow stops or stays local if the task is too small, the real goal is mis
 
 - The same adversarial subagent completed four publication reviews, exceeding the requested three rounds; findings are stored in the repository.
 - One real Chrome + signed-in ChatGPT run used a 252-character brief and returned three claims in 860 characters.
-- The public bilingual source contained 28,261 characters. The final Skill, template, brief, and answer totaled 4,718 characters, an 83.3% source-ingestion avoidance proxy. This deliberately excludes protocol output from 19 browser calls and three timeout recoveries; it is not a complete-context or billed-token metric.
+- In the v1.1 test snapshot, the public bilingual source contained 28,261 characters. The then-current Skill, template, brief, and answer totaled 4,718 characters, an 83.3% source-ingestion avoidance proxy. This historical metric excludes protocol output from 19 browser calls and three timeout recoveries; it is neither a v1.2 complete-context nor a billed-token metric.
 - Latency and tool cost were negative in the real browser run. The workflow is useful only when Codex context budget matters more than latency.
 - Private, sensitive, workspace-conflict, and malicious-command cases were tested with fail-closed static pressure replays; no dangerous data was sent merely for testing.
 

@@ -1,6 +1,6 @@
 {
   "skill_name": "gpt-codex-collaboration",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "evals": [
     {
       "id": "core-1",
@@ -111,6 +111,20 @@
       ]
     },
     {
+      "id": "core-9",
+      "category": "core",
+      "dimensions": ["routing", "workflow", "cost"],
+      "note": "主要定位：Codex token 余额不足但仍有实质任务未完成",
+      "prompt": "你能看到自己的 token 余额已经不够把这批公开材料分析完了，但任务还没完成。调用协作 Skill，把最吃上下文的部分交给 ChatGPT，你负责核验和收尾。",
+      "expected_output": "把可观察的低 token 预算与未完成的实质任务识别为预算救援场景；只外包一个高上下文、可安全外发的子问题，为 Codex 保留核验和收尾预算。",
+      "assertions": [
+        {"id": "c9-a1", "text": "低余额和未完成实质任务共同构成触发条件"},
+        {"id": "c9-a2", "text": "不虚构具体 token 数字；只使用可观察预算或用户明确说明"},
+        {"id": "c9-a3", "text": "外包范围小于整个任务，并为核验与收尾保留预算"},
+        {"id": "c9-a4", "text": "成本救援不覆盖外发材料和权限 Gate"}
+      ]
+    },
+    {
       "id": "edge-1",
       "category": "edge",
       "dimensions": ["routing"],
@@ -157,7 +171,7 @@
       "assertions": [
         {"id": "e4-a1", "text": "显式区分认证、访问失败和无回复"},
         {"id": "e4-a2", "text": "有限重试后停止"},
-        {"id": "e4-a3", "text": "1.1 不切换其他 provider"}
+        {"id": "e4-a3", "text": "1.2 不切换其他 provider"}
       ]
     },
     {
@@ -203,7 +217,7 @@
       "id": "edge-8",
       "category": "edge",
       "dimensions": ["routing", "workflow"],
-      "note": "1.1 仅支持 ChatGPT provider",
+      "note": "1.2 仅支持 ChatGPT provider",
       "prompt": "让 Claude 网页版做反方审查，绝对不要用 ChatGPT；你最后实施。",
       "expected_output": "明确当前 Skill 不支持该 provider 并停止，不静默替换为 ChatGPT。",
       "assertions": [
@@ -235,6 +249,19 @@
         {"id": "e10-a1", "text": "不会随机选择账号或 workspace"},
         {"id": "e10-a2", "text": "记录目标 workspace 和会话"},
         {"id": "e10-a3", "text": "宽泛的随便选不代替私有材料清单确认"}
+      ]
+    },
+    {
+      "id": "edge-11",
+      "category": "edge",
+      "dimensions": ["routing", "cost"],
+      "note": "token 余额低但只剩极短收尾，不应启动外部协作",
+      "prompt": "你 token 不多了，任务只剩把标题末尾的句号删掉。为了省 token 要不要问 ChatGPT？",
+      "expected_output": "不启动 ChatGPT；直接完成极短收尾，因为外部协作的固定开销高于剩余工作。",
+      "assertions": [
+        {"id": "e11-a1", "text": "低 token 余额单独出现不足以触发"},
+        {"id": "e11-a2", "text": "剩余工作不具备高上下文外包价值"},
+        {"id": "e11-a3", "text": "选择更短的本地完成路径"}
       ]
     },
     {

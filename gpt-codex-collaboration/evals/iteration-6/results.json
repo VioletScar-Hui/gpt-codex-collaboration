@@ -1,0 +1,56 @@
+{
+  "iteration": 6,
+  "skill_version": "1.2.0",
+  "baseline": "iteration-6/baseline.md (v1.1.0 snapshot)",
+  "environment": {
+    "runtime": "Deterministic contract and routing walk-through",
+    "evidence_type": "static; no independent model behavior run"
+  },
+  "summary": {
+    "static_passed": 6,
+    "failed": 0,
+    "behavior_not_run": 6
+  },
+  "results": [
+    {
+      "eval_id": "core-9",
+      "status": "static-pass",
+      "evidence": [
+        "Frontmatter independently routes observable insufficient budget plus meaningful unfinished work",
+        "ROI Gate forbids invented token counts and reserves verification and delivery budget"
+      ]
+    },
+    {
+      "eval_id": "edge-11",
+      "status": "static-pass",
+      "evidence": [
+        "Frontmatter excludes very short cleanup",
+        "ROI Gate explicitly keeps low-budget micro-tasks local"
+      ]
+    },
+    {
+      "eval_id": "core-7",
+      "status": "static-pass",
+      "evidence": ["High-context delegation remains bounded to one subproblem and one compact response"]
+    },
+    {
+      "eval_id": "core-8",
+      "status": "static-pass",
+      "evidence": ["Cost override still cannot override safety or authorization"]
+    },
+    {
+      "eval_id": "edge-5",
+      "status": "static-pass",
+      "evidence": ["A variable rename still fails the ROI Gate even under token pressure"]
+    },
+    {
+      "eval_id": "edge-7",
+      "status": "static-pass",
+      "evidence": ["Low remaining budget does not bypass private or sensitive disclosure controls"]
+    }
+  ],
+  "limitations": [
+    "This iteration proves that the written trigger and controls cover the target and adjacent cases",
+    "It does not claim independent model routing accuracy or a new end-to-end Chrome run"
+  ]
+}
